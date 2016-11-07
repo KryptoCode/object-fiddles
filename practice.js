@@ -263,18 +263,34 @@ methodCollection.logHello();
 // parameters and returns a new object with all of the information that you passed in.
 
   //Code Here
+function makePerson(name, birthday, ssn) {
+  var person = {};
+  person.name = name;
+  person.birthday = birthday;
+  person.ssn = ssn;
 
+  return person;
+}
 
 
 //NEXT PROBLEM
 
 
 
-// Create a function called makeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns that object so that whenever you invoke makeCard, you get a brand new credit card.
+// Create a function called makeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns 
+//that object so that whenever you invoke makeCard, you get a brand new credit card.
 
   //Code Here
+function makeCard(cardNumber, expirationDate, securityCode) {
+  var card = {
+    'cardNumber': cardNumber,
+    'expirationDate': expirationDate,
+    'securityCode': securityCode
+  }
+  return card;
+}
 
-
+console.log(makeCard(12345666, 2010, 123), makeCard(0837271,2020,321));
 
 //NEXT PROBLEM
 
@@ -282,7 +298,23 @@ methodCollection.logHello();
 
 /* As of this point you should have a makePerson and a makeCard function which returns you either a person or a credit card object.
    Now, create a bindCard function that takes in a person object as its first parameter and a creditcard object as its second parameter.
-   Have bindCard merge the two parameters together into a new object which contains all the properties from the person as well as the creditcard. While Object.assign would give you the answer, specRunner requires an answer without using it.
+   Have bindCard merge the two parameters together into a new object which contains all the properties from the person as well as the creditcard. 
+   While Object.assign would give you the answer, specRunner requires an answer without using it.
 */
 
   //Code Here
+function bindCard(person, creditcard) {
+  var bindedObj = {};
+  for (var prop in person) {
+    bindedObj[prop] = person[prop];
+  }
+  for (var prop in creditcard) {
+    bindedObj[prop] = creditcard[prop];
+  }
+  return bindedObj;
+}
+
+console.log(bindCard(makePerson('jeff','feb-22-1979','xxx-xx-xxx'), makeCard(12345654,2020,312)));
+
+
+
